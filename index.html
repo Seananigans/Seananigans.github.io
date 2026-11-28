@@ -6,6 +6,8 @@
 <title>Sean Paul Hegarty — Director of Data Science</title>
 <meta name="description" content="Director of Data Science at b.well Connected Health. AI product safety, cost governance, technical standards, security remediation, and team growth.">
 <meta name="author" content="Sean Paul Hegarty">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1310" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Sean Paul Hegarty — Director of Data Science">
 <meta property="og:description" content="Director of Data Science at b.well Connected Health. AI product safety, cost governance, technical standards, security remediation, and team growth.">
@@ -14,22 +16,27 @@
 <style>
   :root {
     color-scheme: light dark;
-    --bg: #ffffff;
-    --fg: #1c2230;
-    --muted: #5a6478;
-    --accent: #2f6f5f;
-    --border: #d9dee8;
-    --surface: #f6f7f9;
-    --max: 860px;
+    --bg: #f7f6f2;
+    --fg: #17211d;
+    --muted: #5d6a63;
+    --accent: #0f6b53;
+    --accent-soft: #e7f0eb;
+    --border: #ddded6;
+    --surface: #ffffff;
+    --shadow: 0 1px 2px rgba(20, 30, 25, 0.04), 0 12px 32px rgba(20, 30, 25, 0.05);
+    --max: 1040px;
+    --radius: 16px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #11151c;
-      --fg: #e8ebf1;
-      --muted: #9aa3b5;
-      --accent: #6dbfa6;
-      --border: #333b4a;
-      --surface: #1b2029;
+      --bg: #0d1310;
+      --fg: #e8efe9;
+      --muted: #9caaa1;
+      --accent: #7bd3b2;
+      --accent-soft: #14251e;
+      --border: #2a352e;
+      --surface: #141d18;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 14px 34px rgba(0, 0, 0, 0.28);
     }
   }
   * { box-sizing: border-box; }
@@ -37,210 +44,371 @@
   body {
     margin: 0;
     color: var(--fg);
-    background: var(--bg);
+    background:
+      radial-gradient(900px 520px at 8% -12%, var(--accent-soft), transparent 62%),
+      var(--bg);
     font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
+  ::selection { color: var(--bg); background: var(--accent); }
   a {
     color: var(--accent);
     text-decoration: none;
     text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
   }
   a:hover { text-decoration: underline; }
   a:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 3px;
+    border-radius: 4px;
   }
+  .skip {
+    position: absolute;
+    top: -3rem;
+    left: 1rem;
+    z-index: 10;
+    padding: 0.55rem 0.85rem;
+    border-radius: 8px;
+    color: var(--bg);
+    background: var(--fg);
+    font-size: 0.9rem;
+    font-weight: 650;
+  }
+  .skip:focus { top: 1rem; }
   .wrap {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 3.5rem 1.35rem 4rem;
+    padding: 4rem 1.5rem;
   }
   .hero {
-    padding-bottom: 2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+    gap: 2rem;
+    align-items: end;
+    padding-bottom: 2.5rem;
     border-bottom: 1px solid var(--border);
   }
+  .hero-copy { min-width: 0; }
   .eyebrow {
-    margin: 0 0 0.55rem;
+    margin: 0 0 0.75rem;
     color: var(--accent);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
   h1 {
-    margin: 0 0 0.7rem;
-    font-size: clamp(2.35rem, 6vw, 3.6rem);
-    line-height: 1.02;
-    letter-spacing: -0.035em;
+    margin: 0 0 1rem;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: clamp(3rem, 7vw, 5.1rem);
+    font-weight: 600;
+    line-height: 0.94;
+    letter-spacing: -0.055em;
   }
   .lede {
-    max-width: 62ch;
-    margin: 0 0 1.1rem;
-    color: var(--muted);
-    font-size: 1.08rem;
-  }
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.25rem 0.55rem;
+    max-width: 58ch;
     margin: 0;
     color: var(--muted);
-    font-size: 0.95rem;
+    font-size: 1.12rem;
   }
-  .links .sep { color: var(--border); }
-  main { margin-top: 2.6rem; }
-  section { margin-top: 2.6rem; }
+  .hero-card {
+    padding: 1.2rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+  .card-label {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+  .card-role {
+    margin: 0.45rem 0 0;
+    font-size: 1.12rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .card-org {
+    margin: 0.2rem 0 0.65rem;
+    color: var(--accent);
+    font-size: 0.95rem;
+    font-weight: 650;
+  }
+  .card-loc {
+    margin: 0 0 0.9rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+  .card-links {
+    display: flex;
+    gap: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    font-weight: 650;
+  }
+  main { margin-top: 3rem; }
+  section { margin-top: 3rem; }
   section:first-child { margin-top: 0; }
   h2 {
-    margin: 0 0 1.1rem;
-    padding-bottom: 0.45rem;
-    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0 0 1.2rem;
     color: var(--muted);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+  }
+  h2::before {
+    content: "";
+    width: 1.4rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent);
   }
   p { margin: 0 0 0.95rem; }
   .metrics {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.75rem;
-    margin-top: 0.2rem;
+    gap: 0.85rem;
   }
   .metric {
-    padding: 1rem 0.95rem;
+    position: relative;
+    padding: 1.1rem 1rem 1.15rem 1.15rem;
+    overflow: hidden;
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 14px;
     background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+  .metric::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--accent);
+    opacity: 0.85;
   }
   .metric strong {
     display: block;
     color: var(--accent);
-    font-size: 1.65rem;
+    font-size: 1.8rem;
     line-height: 1;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
     font-variant-numeric: tabular-nums;
   }
   .metric span {
     display: block;
-    margin-top: 0.45rem;
+    margin-top: 0.5rem;
     color: var(--muted);
     font-size: 0.8rem;
-    line-height: 1.35;
+    line-height: 1.4;
   }
-  .job {
-    margin: 0 0 1.6rem;
-    padding-left: 1.05rem;
-    border-left: 2px solid var(--border);
+  .about { max-width: 74ch; }
+  .about p { font-size: 1.02rem; }
+  .about p:last-child { margin-bottom: 0; }
+  .company {
+    margin: 0 0 1rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
   }
-  .job:last-child { margin-bottom: 0; }
-  .job-head {
+  .company:last-child { margin-bottom: 0; }
+  .company-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .company-head > div { min-width: 0; }
+  .company h3 {
+    margin: 0;
+    font-size: 1.13rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .role-title {
+    margin: 0.18rem 0 0;
+    color: var(--accent);
+    font-size: 0.94rem;
+    font-weight: 650;
+  }
+  .company-dates {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.82rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .company > ul {
+    margin: 0.85rem 0 0;
+    padding-left: 1.15rem;
+  }
+  .company > ul li { margin: 0 0 0.4rem; }
+  .company > ul li:last-child { margin-bottom: 0; }
+  .roles {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .role { padding: 1rem 0; }
+  .role + .role { border-top: 1px solid var(--border); }
+  .role:last-child { padding-bottom: 0; }
+  .role-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     gap: 1rem;
     flex-wrap: wrap;
   }
-  .job h3 {
+  .role h4 {
     margin: 0;
-    font-size: 1.04rem;
+    color: var(--accent);
+    font-size: 1rem;
     line-height: 1.3;
   }
-  .job-dates {
+  .role-dates {
     margin: 0;
     color: var(--muted);
-    font-size: 0.84rem;
+    font-size: 0.8rem;
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
   }
-  .job-title {
-    margin: 0.15rem 0 0.45rem;
-    color: var(--accent);
-    font-size: 0.94rem;
-    font-weight: 650;
-  }
-  .job ul {
-    margin: 0;
+  .role ul {
+    margin: 0.6rem 0 0;
     padding-left: 1.15rem;
   }
-  .job li { margin: 0 0 0.38rem; }
-  .job li:last-child { margin-bottom: 0; }
+  .role li { margin: 0 0 0.38rem; }
+  .role li:last-child { margin-bottom: 0; }
   .skills {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem 1.6rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+  .skill {
+    padding: 1.1rem 1.15rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
   }
   .skill b {
     display: block;
-    margin-bottom: 0.2rem;
-    color: var(--muted);
-    font-size: 0.76rem;
+    margin-bottom: 0.3rem;
+    color: var(--accent);
+    font-size: 0.74rem;
     font-weight: 700;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
-  .skill p { margin: 0; }
+  .skill p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
   .edu {
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
     list-style: none;
   }
-  .edu li { margin: 0 0 0.45rem; }
-  .edu li:last-child { margin-bottom: 0; }
+  .edu li {
+    padding: 0.9rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu li:last-child { border-bottom: 0; }
   .edu span { color: var(--muted); }
   footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
     margin-top: 3.5rem;
-    padding-top: 1.25rem;
+    padding-top: 1.4rem;
     border-top: 1px solid var(--border);
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
-  footer p { margin: 0 0 0.25rem; }
-  footer .fine { font-size: 0.84rem; }
+  footer p { margin: 0; }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; align-items: start; }
+    .hero-card { max-width: 430px; }
+  }
   @media (max-width: 720px) {
-    .wrap { padding-top: 2.5rem; }
+    .wrap { padding: 2.75rem 1.25rem 3rem; }
     .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .skills { grid-template-columns: 1fr; }
   }
   @media (max-width: 520px) {
+    h1 { font-size: clamp(2.7rem, 15vw, 4rem); }
     .metrics { grid-template-columns: 1fr; }
-    .job-head { display: block; }
-    .job-dates { margin-top: 0.1rem; }
+    .company { padding: 1.1rem; }
+    .company-head, .role-head { display: block; }
+    .company-dates, .role-dates { margin-top: 0.2rem; }
+    footer { display: block; }
+    footer p + p { margin-top: 0.35rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
   }
   @media print {
     body { color: #000; background: #fff; }
     .wrap { max-width: none; padding: 0; }
+    .skip { display: none; }
     a { color: #000; text-decoration: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-card, .metric, .company, .skill, .edu { box-shadow: none; }
+    .metric { break-inside: avoid; }
     .metrics { grid-template-columns: repeat(4, 1fr); }
-    .metric { background: none; border-color: #999; }
-    .job { break-inside: avoid; }
+    .company, .role, .skill, .edu li { break-inside: avoid; }
     footer { display: none; }
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
 
 <header class="hero">
-  <p class="eyebrow">Director of Data Science</p>
-  <h1>Sean Paul Hegarty</h1>
-  <p class="lede">
-    I lead data science and AI systems in healthcare &mdash; with a focus on product
-    safety, cost governance, technical standards, security remediation, and team growth.
-  </p>
-  <p class="links">
-    <a href="https://linkedin.com/in/seanpaulhegarty" rel="me">LinkedIn</a>
-    <span class="sep" aria-hidden="true">&middot;</span>
-    <a href="https://github.com/Seananigans" rel="me">GitHub</a>
-    <span class="sep" aria-hidden="true">&middot;</span>
-    <span>San Francisco Bay Area</span>
-  </p>
+  <div class="hero-copy">
+    <p class="eyebrow">Data science &amp; AI leadership</p>
+    <h1>Sean Paul Hegarty</h1>
+    <p class="lede">
+      I lead data science and AI systems in healthcare &mdash; with a focus on product
+      safety, cost governance, technical standards, security remediation, and team growth.
+    </p>
+  </div>
+  <aside class="hero-card" aria-label="Current role and links">
+    <p class="card-label">Currently</p>
+    <p class="card-role">Director of Data Science</p>
+    <p class="card-org">b.well Connected Health</p>
+    <p class="card-loc">San Francisco Bay Area</p>
+    <div class="card-links">
+      <a href="https://linkedin.com/in/seanpaulhegarty" rel="me">LinkedIn</a>
+      <a href="https://github.com/Seananigans" rel="me">GitHub</a>
+    </div>
+  </aside>
 </header>
 
-<main>
+<main id="main">
 
 <section aria-labelledby="impact-heading">
   <h2 id="impact-heading">Selected impact</h2>
@@ -266,89 +434,94 @@
 
 <section aria-labelledby="about-heading">
   <h2 id="about-heading">About</h2>
-  <p>
-    Director of Data Science at b.well Connected Health, where I lead data science
-    across AI product safety and reliability, cost governance, technical standards,
-    security remediation, and team growth. Previously Data Science Manager
-    (Jul 2025&ndash;Sep 2026), Principal Data Scientist (Mar 2022&ndash;Jul 2025), and
-    Senior Data Scientist (Oct 2020&ndash;Mar 2022), with earlier data-scientist roles at
-    GSN Games, Clarify Health Solutions, and IBM Watson Health.
-  </p>
-  <p>
-    Recent work includes a 16% cost reduction on a targeted 25-person cohort,
-    +29% spend/user over the same eight-week window, a business case that won approval
-    for two new roles, and three direct reports grown into expanded ownership. I also
-    extended a critical clinical-data service by 178 commits and built a 47-repository
-    dependency graph plus a 51-file technical standards library cited by another team's
-    design documentation.
-  </p>
+  <div class="about">
+    <p>
+      Director of Data Science at b.well Connected Health, where I lead data science
+      across AI product safety and reliability, cost governance, technical standards,
+      security remediation, and team growth. Previously Data Science Manager
+      (Jul 2025&ndash;Sep 2026), Principal Data Scientist (Mar 2022&ndash;Jul 2025), and
+      Senior Data Scientist (Oct 2020&ndash;Mar 2022), with earlier data-scientist roles at
+      GSN Games, Clarify Health Solutions, and IBM Watson Health.
+    </p>
+    <p>
+      Recent work includes a 16% cost reduction on a targeted 25-person cohort,
+      +29% spend/user over the same eight-week window, a business case that won approval
+      for two new roles, and three direct reports grown into expanded ownership. I also
+      extended a critical clinical-data service by 178 commits and built a 47-repository
+      dependency graph plus a 51-file technical standards library cited by another team's
+      design documentation.
+    </p>
+  </div>
 </section>
 
 <section aria-labelledby="experience-heading">
   <h2 id="experience-heading">Experience</h2>
 
-  <article class="job">
-    <div class="job-head">
+  <article class="company">
+    <div class="company-head">
       <h3>b.well Connected Health</h3>
-      <p class="job-dates">Sep 2026 &ndash; Present</p>
+      <p class="company-dates">Oct 2020 &ndash; Present</p>
     </div>
-    <p class="job-title">Director of Data Science</p>
-    <ul>
-      <li>Lead data science for AI product safety, reliability, cost governance, technical standards, and security remediation across an AI engineering organization.</li>
-      <li>Cut AI spend 16% on a targeted 25-person cohort and 13% per unit of work org-wide while adoption grew +29% spend/user and +39% usage/user over eight weeks.</li>
-      <li>Drove 53 security-vulnerability remediations to approval and built a single source of truth for 47 repositories plus a 51-file technical standards library.</li>
-      <li>Set technical direction at org scope: represent the team on the org-wide security task force, maintain a standing weekly with peer engineering leadership, and review a peer leader's AI monitoring and evaluation strategy.</li>
-      <li>Lead a team of data scientists, emphasizing clear ownership, production accountability, and cross-team technical communication; grew three direct reports into expanded ownership.</li>
-    </ul>
+    <ol class="roles">
+      <li class="role">
+        <div class="role-head">
+          <h4>Director of Data Science</h4>
+          <p class="role-dates">Sep 2026 &ndash; Present</p>
+        </div>
+        <ul>
+          <li>Lead data science for AI product safety, reliability, cost governance, technical standards, and security remediation across an AI engineering organization.</li>
+          <li>Cut AI spend 16% on a targeted 25-person cohort and 13% per unit of work org-wide while adoption grew +29% spend/user and +39% usage/user over eight weeks.</li>
+          <li>Drove 53 security-vulnerability remediations to approval and built a single source of truth for 47 repositories plus a 51-file technical standards library.</li>
+          <li>Set technical direction at org scope: represent the team on the org-wide security task force, maintain a standing weekly with peer engineering leadership, and review a peer leader's AI monitoring and evaluation strategy.</li>
+          <li>Lead a team of data scientists, emphasizing clear ownership, production accountability, and cross-team technical communication; grew three direct reports into expanded ownership.</li>
+        </ul>
+      </li>
+      <li class="role">
+        <div class="role-head">
+          <h4>Data Science Manager</h4>
+          <p class="role-dates">Jul 2025 &ndash; Sep 2026</p>
+        </div>
+        <ul>
+          <li>Mentored a multidisciplinary team, hired senior talent, and led cross-functional initiatives across data science, engineering, and product.</li>
+          <li>Built the business case that won approval for two new team roles: identified the unowned production deployment, monitoring, and evaluation gap, benchmarked peer health-AI staffing, and mapped the roles onto leadership's evaluation-strategy document.</li>
+          <li>Built and ran a repeatable hiring pipeline for two open roles: 201 applicants moved from automated resume scoring to a near-offer in about ten days, with funnel metrics at every stage.</li>
+          <li>Delivered org-adopted developer tooling, including a PR risk, type, and semver classifier adopted across roughly 45 open PRs on a major service.</li>
+          <li>Led the team's piece of a three-team wearables and health-scoring launch, creating the shared coordination space, scope documentation, and launch announcement.</li>
+        </ul>
+      </li>
+      <li class="role">
+        <div class="role-head">
+          <h4>Principal Data Scientist</h4>
+          <p class="role-dates">Mar 2022 &ndash; Jul 2025</p>
+        </div>
+        <ul>
+          <li>Implemented an LLM-driven symptom-to-specialty parser in provider search, lifting click-through 6&ndash;11&times; across six months of releases.</li>
+          <li>Extended and secured a clinical-data integration service: 178 commits spanning security hardening, resilient aggregation, retry logic, per-request deadlines, and monitoring documentation.</li>
+          <li>Built the persistence foundation for continuous, multi-turn conversations in the company's conversational AI assistant, including a security-hardening framework that prevents malicious input from reaching clinical data systems.</li>
+          <li>Owned statistical validation of a patient-matching algorithm change before deployment, quantifying false patient-record merge risk to confirm the change was safe.</li>
+        </ul>
+      </li>
+      <li class="role">
+        <div class="role-head">
+          <h4>Senior Data Scientist</h4>
+          <p class="role-dates">Oct 2020 &ndash; Mar 2022</p>
+        </div>
+        <ul>
+          <li>Built automated training, validation, monitoring, and alerting pipelines using Python, Databricks, and cloud infrastructure behind multiple production ML systems.</li>
+          <li>Drove the experimentation design framework for the marketing team, producing a 33% increase in campaign responses over three months.</li>
+        </ul>
+      </li>
+    </ol>
   </article>
 
-  <article class="job">
-    <div class="job-head">
-      <h3>b.well Connected Health</h3>
-      <p class="job-dates">Jul 2025 &ndash; Sep 2026</p>
+  <article class="company">
+    <div class="company-head">
+      <div>
+        <h3>GSN Games</h3>
+        <p class="role-title">Senior Data Scientist</p>
+      </div>
+      <p class="company-dates">Apr 2020 &ndash; Oct 2020</p>
     </div>
-    <p class="job-title">Data Science Manager</p>
-    <ul>
-      <li>Mentored a multidisciplinary team, hired senior talent, and led cross-functional initiatives across data science, engineering, and product.</li>
-      <li>Built the business case that won approval for two new team roles: identified the unowned production deployment, monitoring, and evaluation gap, benchmarked peer health-AI staffing, and mapped the roles onto leadership's evaluation-strategy document.</li>
-      <li>Built and ran a repeatable hiring pipeline for two open roles: 201 applicants moved from automated resume scoring to a near-offer in about ten days, with funnel metrics at every stage.</li>
-      <li>Delivered org-adopted developer tooling, including a PR risk, type, and semver classifier adopted across roughly 45 open PRs on a major service.</li>
-      <li>Led the team's piece of a three-team wearables and health-scoring launch, creating the shared coordination space, scope documentation, and launch announcement.</li>
-    </ul>
-  </article>
-
-  <article class="job">
-    <div class="job-head">
-      <h3>b.well Connected Health</h3>
-      <p class="job-dates">Mar 2022 &ndash; Jul 2025</p>
-    </div>
-    <p class="job-title">Principal Data Scientist</p>
-    <ul>
-      <li>Implemented an LLM-driven symptom-to-specialty parser in provider search, lifting click-through 6&ndash;11&times; across six months of releases.</li>
-      <li>Extended and secured a clinical-data integration service: 178 commits spanning security hardening, resilient aggregation, retry logic, per-request deadlines, and monitoring documentation.</li>
-      <li>Built the persistence foundation for continuous, multi-turn conversations in the company's conversational AI assistant, including a security-hardening framework that prevents malicious input from reaching clinical data systems.</li>
-      <li>Owned statistical validation of a patient-matching algorithm change before deployment, quantifying false patient-record merge risk to confirm the change was safe.</li>
-    </ul>
-  </article>
-
-  <article class="job">
-    <div class="job-head">
-      <h3>b.well Connected Health</h3>
-      <p class="job-dates">Oct 2020 &ndash; Mar 2022</p>
-    </div>
-    <p class="job-title">Senior Data Scientist</p>
-    <ul>
-      <li>Built automated training, validation, monitoring, and alerting pipelines using Python, Databricks, and cloud infrastructure behind multiple production ML systems.</li>
-      <li>Drove the experimentation design framework for the marketing team, producing a 33% increase in campaign responses over three months.</li>
-    </ul>
-  </article>
-
-  <article class="job">
-    <div class="job-head">
-      <h3>GSN Games</h3>
-      <p class="job-dates">Apr 2020 &ndash; Oct 2020</p>
-    </div>
-    <p class="job-title">Senior Data Scientist</p>
     <ul>
       <li>Partnered with multiple game studios as internal clients of the data department, delivering churn prediction and lifetime-value estimation models.</li>
       <li>Developed the model retraining and evaluation framework for multiple studios' churn and LTV models, grounded in each product's feature-engineering infrastructure.</li>
@@ -356,12 +529,14 @@
     </ul>
   </article>
 
-  <article class="job">
-    <div class="job-head">
-      <h3>Clarify Health Solutions</h3>
-      <p class="job-dates">Nov 2019 &ndash; Apr 2020</p>
+  <article class="company">
+    <div class="company-head">
+      <div>
+        <h3>Clarify Health Solutions</h3>
+        <p class="role-title">Data Scientist</p>
+      </div>
+      <p class="company-dates">Nov 2019 &ndash; Apr 2020</p>
     </div>
-    <p class="job-title">Data Scientist</p>
     <ul>
       <li>Implemented Bayesian and non-linear hyper-parameter optimization across 400+ production models to reduce manual intervention and improve performance.</li>
       <li>Developed supervised learning pipelines in PySpark and AWS with Airflow DAGs for automated retraining and evaluation.</li>
@@ -369,12 +544,14 @@
     </ul>
   </article>
 
-  <article class="job">
-    <div class="job-head">
-      <h3>IBM Watson Health</h3>
-      <p class="job-dates">2017 &ndash; 2019</p>
+  <article class="company">
+    <div class="company-head">
+      <div>
+        <h3>IBM Watson Health</h3>
+        <p class="role-title">Data Scientist</p>
+      </div>
+      <p class="company-dates">2017 &ndash; 2019</p>
     </div>
-    <p class="job-title">Data Scientist</p>
     <ul>
       <li>Built and validated predictive models for healthcare outcomes using rigorous statistical testing and experimental design.</li>
       <li>Reduced training and inference time of six Cost of Care models 3&times; by shrinking the feature space 16&times; while maintaining state-of-the-art performance.</li>
@@ -419,7 +596,7 @@
 
 <footer>
   <p>Connect on <a href="https://linkedin.com/in/seanpaulhegarty">LinkedIn</a> or <a href="https://github.com/Seananigans">GitHub</a>.</p>
-  <p class="fine">San Francisco Bay Area &middot; Resume available on request.</p>
+  <p>San Francisco Bay Area &middot; Resume available on request.</p>
 </footer>
 
 </div>
